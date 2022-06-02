@@ -3,11 +3,11 @@ const jwt = require("jsonwebtoken");
 const {TokenExpiredError} = require("jsonwebtoken");
 
 const credentials = {
-    user: "postgres",
-    password: "ishwar@01",
-    database: "docket",
-    host: "localhost",
-    port: 5432,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
+    host: process.env.host,
+    port: process.env.port,
 }
 
 const handleError = (err) => {
