@@ -44,7 +44,9 @@ app.post("/login", (req, res) => {
             if (r[0]) {
                 sessions.inSession.push(r[2]);
                 console.log(sessions);
-                res.cookie('sessionToken', r[2], {httpOnly: true, maxAge: 86400});
+                let date = new Date()
+                date.setDate(date.getDate() + 1)
+                res.cookie('sessionToken', r[2], {httpOnly: true, expires: date});
                 res.status(200).json(r[1]);
             } else {
                 res.status(400).json(r[1]);
@@ -60,7 +62,9 @@ app.post("/register", (req, res) => {
             console.log(r);
             if (r[0]) {
                 sessions.inSession.push(r[2]);
-                res.cookie('sessionToken', r[2], {httpOnly: true, maxAge: 86400});
+                let date = new Date()
+                date.setDate(date.getDate() + 1)
+                res.cookie('sessionToken', r[2], {httpOnly: true, expires: date});
                 res.status(200).json(r[1]);
             } else {
                 res.status(400).json(r[1]);
