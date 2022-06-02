@@ -19,7 +19,13 @@ let client = null;
 
 async function initialize() {
 
-    client = new Client(credentials);
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    });
+
     client.connect();
 
     return await client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';", (err, res) => {
