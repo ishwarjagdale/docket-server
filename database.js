@@ -2,13 +2,13 @@ const {Client} = require("pg");
 const jwt = require("jsonwebtoken");
 const {TokenExpiredError} = require("jsonwebtoken");
 
-const credentials = {
+/*const credentials = {
     user: process.env.user,
     password: process.env.password,
     database: process.env.database,
     host: process.env.host,
     port: process.env.port,
-}
+}*/
 
 const handleError = (err) => {
     console.log("ERROR: ", err.stack);
