@@ -1,12 +1,16 @@
 const express = require("express");
 const { Pool, Client } = require("pg");
 const { expressjwt: jwt } = require("express-jwt");
-
+const cors = require('cors');
 const db = require("./database");
 const {verify} = require("jsonwebtoken");
 const {getUser} = require("./database");
 const PORT = process.env.PORT || 3001;
+
 const app = express();
+app.use(cors({
+    origin: process.env.FRONT_END
+}))
 
 let sessions  = {
   inSession: [],
