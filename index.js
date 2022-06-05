@@ -12,6 +12,10 @@ app.use(cors({
     origin: process.env.FRONT_END
 }))
 
+app.options("*", cors({
+    origin: process.env.FRONT_END
+}))
+
 let sessions  = {
   inSession: [],
   outOfSession: []
