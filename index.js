@@ -8,7 +8,7 @@ const {getUser} = require("./database");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(cors());
+app.use(cors({credentials: true, origin: 'https://docket.pages.dev'}));
 
 let sessions  = {
   inSession: [],
