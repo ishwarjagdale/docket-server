@@ -167,9 +167,6 @@ app.get("/auth/logout", (req, res) => {
     res.status(200).json(true);
 })
 
-app.get("/test", (req, res) => {
-    db.client.query(req.body)
-})
 
 app.listen(PORT, () => {
     console.log(`docket server listening on ${PORT}`);
