@@ -48,7 +48,7 @@ app.post("/login", (req, res) => {
                 console.log(sessions);
                 let date = new Date()
                 date.setDate(date.getDate() + 1)
-                res.cookie('sessionToken', r[2], {httpOnly: true, expires: date, sameSite: "none"});
+                res.cookie('sessionToken', r[2], {httpOnly: true, expires: date, sameSite: "none", secure: true});
                 res.status(200).json(r[1]);
             } else {
                 res.status(400).json(r[1]);
