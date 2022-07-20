@@ -8,13 +8,7 @@ const {getUser} = require("./database");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(cors({
-    origin: process.env.FRONT_END
-}))
-
-app.options("*", cors({
-    origin: process.env.FRONT_END
-}))
+app.use(cors());
 
 let sessions  = {
   inSession: [],
@@ -100,7 +94,10 @@ app.use("/api", jwt({ secret: process.env.secret_key, algorithms: ["HS256"], get
 
 app.get("/api/notes", (req, res) => {
     let userId = db.verifyToken(req.userToken)[1]['userId'];
-    db.getNotes(userId).then((r) => {
+
+    console.log(req.query.q);
+
+    db.getNotes(userId, req.query.q).then((r) => {
         if(r[0]) {
             res.status(200).json(r[1]);
         } else {
@@ -156,7 +153,7 @@ app.post("/api/notes", (req, res) => {
     } else {
         res.status(401).json("Unauthorized request");
     }
-})
+});
 
 app.get("/auth/logout", (req, res) => {
     let userId = Number.parseInt(db.verifyToken(getCookieToken(req))[1]['userId']);

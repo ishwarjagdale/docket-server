@@ -32,7 +32,7 @@ async function initialize() {
         if (err) {
             console.log(err.stack);
         } else {
-
+            console.log("::", process.env.DATABASE_URL);
             console.log(":: Connecting to database");
             let tables = res.rows.map((row) => row.table_name);
             console.log(":: Initializing database");
@@ -165,12 +165,23 @@ async function getUser(dToken) {
     }).catch(handleError);
 }
 
-async function getNotes(userId) {
-    return await client.query(`SELECT id, title, category, owner, color, mark, encrypted, date_created, date_modified
+async function getNotes(userId, query) {
+    if(query === undefined || query === " ") {
+        return await client.query(`SELECT id, title, category, owner, color, mark, encrypted, date_created, date_modified
                                FROM notes
-                               WHERE owner = $1 ORDER BY date_created`, [userId]).then((res) => {
-        return [true, res.rows];
-    }).catch(handleError)
+                               WHERE owner = $1 
+                               ORDER BY date_created DESC`, [userId]).then((res) => {
+            return [true, res.rows];
+        }).catch(handleError)
+    } else {
+        return await client.query(`SELECT id, title, category, owner, color, mark, encrypted, date_created, date_modified
+                               FROM notes
+                               WHERE owner = $1
+                               AND title ILIKE $2 
+                               ORDER BY date_created DESC`, [userId, `%${query}%`]).then((res) => {
+            return [true, res.rows];
+        }).catch(handleError)
+    }
 }
 
 async function getNote(userId, noteId) {

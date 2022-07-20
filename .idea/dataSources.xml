@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="d5v1dj7sjp8h72@ec2-3-224-164-189.compute-1.amazonaws.com" uuid="c9b9e58e-d78e-4049-bedf-19fe692ef0d6">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-3-224-164-189.compute-1.amazonaws.com:5432/d5v1dj7sjp8h72</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="docket@localhost" uuid="fd2b000e-140b-4d47-b4ae-f3b60072791a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/docket</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="da3n78odmjouch@ec2-34-198-186-145.compute-1.amazonaws.com" uuid="d59880bc-dec3-4ae8-a6f3-fda9a7f5cf35">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-34-198-186-145.compute-1.amazonaws.com:5432/da3n78odmjouch</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
